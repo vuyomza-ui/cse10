@@ -3,28 +3,29 @@ using System;
 class Program
 {
     static void Main(string[] args)
-        //RandomGenerator#1
-        //While loop#2
-        //If stantment 
+        
 
     {
-       
+       //RandomGenerator#1
+        //While loop#2
+        //If stantment
+
         Random randomGenerator = new Random();
-        int number = randomGenerator.Next(1, 100);
+        int magicNumber = randomGenerator.Next(1, 101);
 
         int guess = -1;
-        while (guess != magicnumber)
+        while (guess != magicNumber)
         {
             Console.WriteLine("What is the Magic number? ");
-            Guess = int.Parse(console.ReadLine());
+            guess = int.Parse(Console.ReadLine());
 
-            if (magicnumber > guess)
+            if (magicNumber > guess)
             {
-                console.WriteLine("Higher");
+                Console.WriteLine("Higher");
             }
-            else if (magicnumber < guess)
+            else if (magicNumber < guess)
             {
-                console.WriteLine("Lower");
+                Console.WriteLine("Lower");
             }
             else
             {

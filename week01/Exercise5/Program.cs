@@ -14,10 +14,10 @@ class Program
         // Calls the DisplayPersonalMessage method and passes the user's name 
         DisplayPersonalMessage(userName);
         
-        Console.Writeline("Please eneter your favourite number: ");
+        Console.WriteLine("Please enter your favourite number: ");
         int number = int.Parse(Console.ReadLine());
 
-        Console.WriteLine($"UserName}, the square of your number is {SquareNumber(number)}");
+        Console.WriteLine($"{userName}, the square of your number is {SquareNumber(number)}");
         }
         
         // This method displays a welcome message
@@ -27,7 +27,7 @@ class Program
 
         }
 
-        static void DisplaypersonalMessage(string userName)
+        static void DisplayPersonalMessage(string userName)
         {
             Console.WriteLine($"Hello {userName}");
         }

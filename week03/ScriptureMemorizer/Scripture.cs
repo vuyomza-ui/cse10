@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 // Represents the entire scripture.
 public class Scripture
+
 {
     private Reference _reference;
     private List<Word> _words;
@@ -17,13 +18,15 @@ public class Scripture
         
         
     string[] words = text.Split(
-        new[] {' ', '\n', '\r', '\t,' },
+        new[] {' ', '\n', '\r', '\t' },
         StringSplitOptions.RemoveEmptyEntries
     );
 
     foreach (string word in words)
     {
         _words.Add(new Word(word));
+    }
+
     }
 
     public string GetDisplayText()

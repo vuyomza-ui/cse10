@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class Square : Shape
 {
-
     private double _side;
 
     // Constructor
@@ -12,7 +11,7 @@ public class Square : Shape
        _side = side;
     }
 
-    public virtual string GetArea()
+    public override double GetArea()
     {
         return _side * _side;
 

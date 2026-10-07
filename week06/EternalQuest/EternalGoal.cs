@@ -3,8 +3,8 @@ using System;
 public class EternalGoal : Goal
 {
 
-    public EternalGoal(string goal, string user, int value)
-        : base(goal, user, value)
+    public EternalGoal(string name, string user, int points)
+        : base(goal, user, points)
     {
     }
 
@@ -16,6 +16,11 @@ public class EternalGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"[ ] {GetName()}";
+        return $"[ ] {GetName()} - {GetUser()}";
+    }
+
+    public override string GetStringRepresentation()
+    {
+        return $"EternalGaol|{GetName}|{GetUser()}|{GetPoints()}";
     }
 }

@@ -10,6 +10,12 @@ public class SimpleGoal : Goal
         _isComplete = false;
     }
 
+    pulic SimpleGoal(string name, string user, int points, bool is Complete)
+        : base(name, user, points)
+    {
+        _isComplete = isComplete;
+    }
+
     public override int RecordEvent()
     {
         if (!_isComplete)
@@ -19,6 +25,7 @@ public class SimpleGoal : Goal
             return GetPoints();
         }
 
+        Console.WriteLine("This goal has already been completed.");
         return 0;
     }
 
@@ -31,6 +38,11 @@ public class SimpleGoal : Goal
     {
         string checkbox = _isComplete ? "[X]" : "[ ]";
 
-        return $"{checkbox} {GetName()}";
+        return $"{checkbox} {GetName()} - {GetUser()}";
+    }
+
+    public override string getStringRepresentation()
+    {
+        return $"SimpleGoal|{GetName()}|{GetUser}|{GetPoints()}|{_isComplete}";
     }
 }

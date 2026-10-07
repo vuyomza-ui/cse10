@@ -36,4 +36,6 @@ public abstract class Goal
     {
         return false;
     }
+
+    public abstract string GetStringRepresentation();
 }

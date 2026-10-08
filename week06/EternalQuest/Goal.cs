@@ -3,13 +3,13 @@ using System;
 public abstract class Goal
 {
     private string _name;
-    private string _user;
+    private string _description;
     private int _points;
 
     public Goal(string name, string user, int points)
     {
         _name = name;
-        _user = user;
+        _description = description;
         _points = points;
     }
 
@@ -18,9 +18,9 @@ public abstract class Goal
         return _name;
     }
 
-    public string GetUser()
+    public string GetDescription()
     {
-        return _user;
+        return _description;
     }
 
     public int GetPoints()

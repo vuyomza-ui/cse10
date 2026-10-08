@@ -9,14 +9,14 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("=======================================");
-        Console.WriteLine("          Eternal Quest Program");
-        Console.WriteLine("=======================================");
-
         string choice = "";
 
         while (choice != "8")
         {
+            Console.WriteLine();
+            Console.WriteLine("=======================================");
+            Console.WriteLine("          Eternal Quest Program");
+            Console.WriteLine("=======================================");
             Console.WriteLine();
             Console.WriteLine($"Current Score: {_score}");
             Console.WriteLine();
@@ -84,15 +84,20 @@ class Program
         string name = Console.ReadLine();
 
         Console.Write("What is a short decription of it? ");
-        string user = Console.ReadLine();
+        string description = Console.ReadLine();
 
-        int points = GetNumber("Write is the amount of points associated with this goal? ");
+        int points = GetNumber(
+            "Write is the amount of points associated with this goal? ");
                 
-        Goal goal = new SimpleGoal(name, user, points);
+        Goal goal = new SimpleGoal(
+        name,
+        description,
+        points);
 
         _goals.Add(goal);
 
-        Console.WriteLine("Simple goal created successfully!");
+        Console.WriteLine(
+            "Simple goal created successfully!");
     }
 
     static void CreateEternalGoal()
@@ -104,15 +109,20 @@ class Program
         string name = Console.ReadLine();
 
         Console.Write("What is a short description of it? ");
-        string user = Console.ReadLine();
+        string description = Console.ReadLine();
 
-        int points = GetNumber("What is the amount of points assoiciated with this goal? ");
+        int points = GetNumber(
+            "What is the amount of points assoiciated with this goal? ");
 
-        Goal goal = new EeternalGoal(name, user, points);
+        Goal goal = new EternalGoal(
+        name,
+        description, 
+        points);
 
         _goals.Add(goal);
 
-        Console.WriteLine("Eternal gaol created successfull!");
+        Console.WriteLine(
+            "Eternal gaol created successfull!");
     }
 
     static void CreateChecklistGoal()
@@ -120,21 +130,24 @@ class Program
         Console.WriteLine();
         Console.WriteLine("Creating a checklist Goal");
 
-        Console.Write("What is the amount of points associated with this goal? ");
+        Console.Write("What is the name of your goal? ");
         string name = Console.ReadLine();
 
         Console.Write("What is a short description of it? ");
-        string user = Console.ReadLine();
+        string description = Console.ReadLine();
 
-        int points = GetNumber("What is the amount of points associated with this goal?");
+        int points = GetNumber(
+            "What is the amount of points associated with this goal?");
 
-        int target = GetNumber("How many times does this goal need to be completed? ");
+        int target = GetNumber(
+            "How many times does this goal need to be completed? ");
 
-        int bonus = GetNumber("What is the bonus for completing the goal? ");
+        int bonus = GetNumber(
+            "What is the bonus for completing the goal? ");
 
         Goal goal = new ChecklistGoal(
             name,
-            user,
+            description,
             points,
             target,
             bonus,
@@ -142,30 +155,38 @@ class Program
 
         _goals.Add(goal);
 
-        Console.WriteLine("Checklist goal created successfully!");
+        Console.WriteLine(
+            "Checklist goal created successfully!");
     }
 
     static void RecordEvent()
     {
         if (_goals.Count == 0)
         {
-            Console.WriteLine("You don't have any goals yet.");
+            Console.WriteLine(
+                "You don't have any goals yet.");
+
             return;
         }
 
         Console.WriteLine();
         Console.Writeline("The goals are:");
 
-        for (int i = 0 < _goals.Count; i++)
+        for (int i = 0; < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
+            Console.WriteLine(
+                $"{i + 1}. {_goals[i].GetDetailsString()}");
         }
 
-        int goalNumber = GetNumber("Which goal did you accomplish? ");
+        int goalNumber = GetNumber(
+            "Which goal did you accomplish? ");
 
-        if (goalNumber < 1 || goalNumber > goals.Count)
+        if (goalNumber < 1 || 
+            goalNumber > goals.Count)
         {
-            Console.WriteLine("Invalid goal number.");
+            Console.WriteLine(
+                "Invalid goal number.");
+
             return;
         }
 
@@ -175,8 +196,10 @@ class Program
 
         _score += pointsEarned;
 
-        Console.WriteLine($"You earned {pointsEarned} points!");
-        Console.WriteLine($"Your new score is {_score} points.");
+        Console.WriteLine(
+            $"You earned {pointsEarned} points!");
+        Console.WriteLine(
+            $"Your new score is {_score} points.");
 
         CheckForLevelUp();
     }
@@ -188,13 +211,16 @@ class Program
 
         if (_goals.Count == 0 )
         {
-            Console.WriteLine("You don't have any goals yet.");
+            Console.WriteLine(
+                "You don't have any goals yet.");
+
             return;
         }
 
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals [i].GetDetailsString()}");
+            Console.WriteLine(
+                $"{i + 1}. {_goals [i].GetDetailsString()}");
         }
     }
 
@@ -202,25 +228,30 @@ class Program
     {
         Console.WriteLine();
         Console.WriteLine("Enter the filename to save to:");
+
         string filename = Console.ReadLine();
 
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile =
+               new StreamWriter(filename))
         {
             outputFile.WriteLine(_score);
 
             foreach (Goal goal in _goals)
             {
-                outputFile.WriteLine(goal.GetStringRepresentation());
+                outputFile.WriteLine(
+                    goal.GetStringRepresentation());
             }
         }
 
-        Console.WriteLine("Goals saved successfully!");
+        Console.WriteLine(
+            "Goals saved successfully!");
     }
 
     static void LoadGoals()
     {
         Console.WriteLine();
         Console.Write("Enter the filename to load: ");
+
         string filename = Console.ReadLine();
 
         if (!File.Exists(filename))
@@ -231,7 +262,7 @@ class Program
 
         string[] lines = File.ReadAllLines(filename);
 
-        if (lines.length == 0)
+        if (lines.Length == 0)
         {
             Console.WriteLine("The file is empty.");
             return;
@@ -248,29 +279,27 @@ class Program
             if (parts[0] == "SimpleGoal")
             {
                 string name = parts[1];
-                string user = parts[2];
+                string description = parts[2];
                 int points = int.Parse(parts[3]);
                 bool complete = bool.Parse(parts[4]);
 
                 _goals.Add(
                     new SimpleGoal(
                         name,
-                        user,
+                        description,
                         points,
-                        complete
-                    )
-                );
+                        complete));
             }
             else if (parts[0] == "EternalGoal")
             {
                 string name = parts[1];
-                string user = parts[2];
+                string description = parts[2];
                 int points = int.Parse(parts[3]);
 
                 _goals.Add(
                     new EternalGoal(
                         name,
-                        user,
+                        description,
                         points
                     )
                 );
@@ -278,7 +307,7 @@ class Program
             else if (parts[0] == "ChecklistGoal")
             {
                 string name =  parts[1];
-                string user = parts[2];
+                string description = parts[2];
                 int points = int.parse(parts[3]);
                 int target = int.Parse(parts[4]);
                 int bonus = int.Parse(parts[5]);
@@ -287,17 +316,16 @@ class Program
                 _Goals.Add(
                     new ChecklistGoal(
                         name,
-                        user
+                        description,
                         points,
                         target,
                         bonus,
-                        completed
-                    )
-                );
+                        completed));
             }
         }
 
-        Console.WriteLine("Goals loaded successfully!");
+        Console.WriteLine(
+            "Goals loaded successfully!");
     }
 
     static int GetNumber(string message)
@@ -313,7 +341,8 @@ class Program
                 return number;
             }
 
-            Console.WriteLine("Please enter a valid number.");
+            Console.WriteLine(
+                "Please enter a valid number.");
         }
     }
 
@@ -324,10 +353,13 @@ class Program
         if (_score > 0 && _score % 1000 == 0)
         {
             Console.WriteLine();
-            Console.WriteLine("*******************************************");
-            Console.WriteLine($"        LEVEL UP! You are now");
+            Console.WriteLine(
+                "*******************************************");
+            Console.WriteLine(
+                $"        LEVEL UP! You are now");
             Console.WriteLine($"             LEVEL {level}!");
-            Console.WriteLine("*******************************************");
+            Console.WriteLine(
+                "*******************************************");
         }
     }
 

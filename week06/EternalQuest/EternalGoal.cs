@@ -3,24 +3,29 @@ using System;
 public class EternalGoal : Goal
 {
 
-    public EternalGoal(string name, string user, int points)
-        : base(goal, user, points)
+    public EternalGoal(
+        string name,
+        string description,
+        int points)
+        : base(name, description, points)
     {
     }
 
     public override int RecordEvent()
     {
         Console.WriteLine("Eternal goal recorded!");
+
         return GetPoints();
     }
 
     public override string GetDetailsString()
     {
-        return $"[ ] {GetName()} - {GetUser()}";
+        return $"[ ] {GetName()} - {GetDescription()}";
     }
 
     public override string GetStringRepresentation()
     {
-        return $"EternalGaol|{GetName}|{GetUser()}|{GetPoints()}";
+        return $"EternalGoal|{GetName()}|{GetDescription()}|" +
+        $"{GetPoints()}";
     }
 }

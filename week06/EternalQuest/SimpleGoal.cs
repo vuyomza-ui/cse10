@@ -10,7 +10,7 @@ public class SimpleGoal : Goal
         _isComplete = false;
     }
 
-    pulic SimpleGoal(
+    public SimpleGoal(
         string name, 
         string description, 
         int points, 
@@ -47,7 +47,7 @@ public class SimpleGoal : Goal
         return $"{checkbox} {GetName()} - {GetDescription()}";
     }
 
-    public override string getStringRepresentation()
+    public override string GetStringRepresentation()
     {
         return $"SimpleGoal|{GetName()}|{GetDescription()}|" +
         $"{GetPoints()}|{_isComplete}";

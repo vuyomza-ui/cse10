@@ -2,7 +2,7 @@ using system;
 
 public class ChecklistGoal : Goal
 {
-    private int _complete;
+    private int _completed;
     private int _target;
     private int _bonus;
 
@@ -49,7 +49,7 @@ public class ChecklistGoal : Goal
 
         if (_completed == _target)
         {
-            Console.Writeline("Checklist goal completed!");
+            Console.WriteLine("Checklist goal completed!");
             Console.WriteLine($"Bonus: {_bonus} points");
 
             return GetPoints() + _bonus;

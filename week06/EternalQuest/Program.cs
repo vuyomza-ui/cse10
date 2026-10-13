@@ -1,5 +1,5 @@
 using System;
-using System.Colections.Generic;
+using System.Collections.Generic;
 using System.IO;
 
 class Program
@@ -150,7 +150,7 @@ class Program
             description,
             points,
             target,
-            bonus,
+            bonus
         );
 
         _goals.Add(goal);
@@ -170,9 +170,9 @@ class Program
         }
 
         Console.WriteLine();
-        Console.Writeline("The goals are:");
+        Console.WriteLine("The goals are:");
 
-        for (int i = 0; < _goals.Count; i++)
+        for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine(
                 $"{i + 1}. {_goals[i].GetDetailsString()}");
@@ -182,7 +182,7 @@ class Program
             "Which goal did you accomplish? ");
 
         if (goalNumber < 1 || 
-            goalNumber > goals.Count)
+            goalNumber > _goals.Count)
         {
             Console.WriteLine(
                 "Invalid goal number.");
@@ -274,7 +274,7 @@ class Program
 
         for (int i = 1; i < lines.Length; i++)
         {
-            string[] parts = lines[i].split('|');
+            string[] parts = lines[i].Split('|');
 
             if (parts[0] == "SimpleGoal")
             {
@@ -308,12 +308,12 @@ class Program
             {
                 string name =  parts[1];
                 string description = parts[2];
-                int points = int.parse(parts[3]);
+                int points = int.Parse(parts[3]);
                 int target = int.Parse(parts[4]);
                 int bonus = int.Parse(parts[5]);
                 int completed = int.Parse(parts[6]);
 
-                _Goals.Add(
+                _goals.Add(
                     new ChecklistGoal(
                         name,
                         description,

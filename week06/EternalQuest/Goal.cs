@@ -6,7 +6,7 @@ public abstract class Goal
     private string _description;
     private int _points;
 
-    public Goal(string name, string user, int points)
+    public Goal(string name, string description, int points)
     {
         _name = name;
         _description = description;
